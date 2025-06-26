@@ -13,7 +13,7 @@ int main(int argc, char **argv)
     for (int i = 1; i < argc; ++i)
     {
         std::string arg = argv[i];
-        for (int j = 0; j < arg.length(); ++j)
+        for (size_t j = 0; j < arg.length(); ++j)
             std::cout << (char)std::toupper(arg[j]);
     }
 
