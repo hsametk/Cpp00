@@ -6,7 +6,7 @@
 /*   By: hakotu <hakotu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:40:02 by hakotu            #+#    #+#             */
-/*   Updated: 2025/06/26 18:04:51 by hakotu           ###   ########.fr       */
+/*   Updated: 2025/06/26 20:24:53 by hakotu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ std::string set_format(std::string str)
 bool PhoneBook::search()
 {
     Contact newcontact;
+    std::string input;
     if (this->consts == 0)
     {
         std::cout << "No contacts to display" << std::endl;
@@ -64,10 +65,15 @@ bool PhoneBook::search()
                   << "|" << std::setw(10) << set_format(this->ContactArry[i].get_last_name())
                   << "|" << std::setw(10) << set_format(this->ContactArry[i].get_nick_name())
                   << "|" << std::endl;
-         
+        std::cout << "|-------------------------------------------|" << std::endl;
+        do
+        {
+            std::cout << "Enter index of the contact to display";
+            std::getline(std::cin, input);
+        } while (input.empty());
+        
     }
-    std::cout << "|-------------------------------------------|" << std::endl;
-    
+       
     return true;
     
 }
