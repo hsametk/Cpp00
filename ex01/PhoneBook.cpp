@@ -6,12 +6,12 @@
 /*   By: hakotu <hakotu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:40:02 by hakotu            #+#    #+#             */
-/*   Updated: 2025/06/26 20:24:53 by hakotu           ###   ########.fr       */
+/*   Updated: 2025/06/27 18:41:23 by hakotu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
-#include <iomanip>
+
 
 PhoneBook::PhoneBook() 
 {
@@ -48,8 +48,9 @@ std::string set_format(std::string str)
 }
 bool PhoneBook::search()
 {
-    Contact newcontact;
+    //Contact newcontact;
     std::string input;
+    int idx;
     if (this->consts == 0)
     {
         std::cout << "No contacts to display" << std::endl;
@@ -65,15 +66,37 @@ bool PhoneBook::search()
                   << "|" << std::setw(10) << set_format(this->ContactArry[i].get_last_name())
                   << "|" << std::setw(10) << set_format(this->ContactArry[i].get_nick_name())
                   << "|" << std::endl;
-        std::cout << "|-------------------------------------------|" << std::endl;
-        do
-        {
-            std::cout << "Enter index of the contact to display";
-            std::getline(std::cin, input);
-        } while (input.empty());
-        
     }
-       
+    std::cout << "|-------------------------------------------|" << std::endl;
+    while (true)
+    {
+         std::cout << "Enter index of the contact to display (-1 to exit): ";
+        std::getline(std::cin, input);
+        if (input.empty())
+        {
+            std::cout << "Input cannot be empty." << std::endl;
+            continue;
+        }
+        if (input == "-1")
+            break;
+        idx = atoi(input.c_str());
+        if (idx == -1)
+            break;
+        if (idx >= 0 && idx < this->consts && !this->ContactArry[idx].get_first_name().empty())
+        {
+            std::cout << "First Name: " << this->ContactArry[idx].get_first_name() << std::endl;
+            std::cout << "Last Name: " << this->ContactArry[idx].get_last_name() << std::endl;
+            std::cout << "Nick Name: " << this->ContactArry[idx].get_nick_name() << std::endl;
+            std::cout << "Phone Number: " << this->ContactArry[idx].get_phone_number() << std::endl;
+            std::cout << "Darkest Secret: " << this->ContactArry[idx].get_darkest_secret() << std::endl;
+            break;
+        }
+        else
+        {
+            std::cout << "Invalid index or empty contact. Please try again." << std::endl;
+        }
+    }
+    
     return true;
     
 }
