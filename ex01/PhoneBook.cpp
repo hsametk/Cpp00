@@ -6,7 +6,7 @@
 /*   By: hakotu <hakotu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:40:02 by hakotu            #+#    #+#             */
-/*   Updated: 2025/06/27 18:41:23 by hakotu           ###   ########.fr       */
+/*   Updated: 2025/06/28 17:16:11 by hakotu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ std::string set_format(std::string str)
 }
 bool PhoneBook::search()
 {
-    //Contact newcontact;
     std::string input;
     int idx;
     if (this->consts == 0)
@@ -95,8 +94,7 @@ bool PhoneBook::search()
         {
             std::cout << "Invalid index or empty contact. Please try again." << std::endl;
         }
-    }
-    
+    }    
     return true;
     
 }

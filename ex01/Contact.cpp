@@ -6,7 +6,7 @@
 /*   By: hakotu <hakotu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 15:45:12 by hakotu            #+#    #+#             */
-/*   Updated: 2025/06/26 15:57:47 by hakotu           ###   ########.fr       */
+/*   Updated: 2025/06/28 17:15:31 by hakotu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,3 @@ std::string Contact::get_darkest_secret()
 {
     return DarkestSecret;
 }
-
-//TODO: input un boş olup olmadığını kontrol et
