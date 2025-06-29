@@ -6,7 +6,7 @@
 /*   By: hakotu <hakotu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:40:02 by hakotu            #+#    #+#             */
-/*   Updated: 2025/06/28 17:16:11 by hakotu           ###   ########.fr       */
+/*   Updated: 2025/06/29 13:35:14 by hakotu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ bool PhoneBook::add()
 {
     Contact newContact;
     while (!newContact.set_first_name())
-        std::cout << "First Name cannot be empty!" << std::endl;
+        ;
     while (!newContact.set_last_name())
-        std::cout << "Last Name cannot be empty!" << std::endl;
+        ;
     while (!newContact.set_nick_name())
         std::cout << "Nick Name cannot be empty!" << std::endl;
     while (!newContact.set_phone_number())
-        std::cout << "Phone Number cannot be empty!" << std::endl;
+        ;
     while (!newContact.set_darkest_secret())
         std::cout << "Darkest Secret cannot be empty!" << std::endl;
     this->ContactArry[this->index] = newContact;
