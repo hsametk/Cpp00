@@ -6,7 +6,7 @@
 /*   By: hakotu <hakotu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:40:02 by hakotu            #+#    #+#             */
-/*   Updated: 2025/06/29 13:35:14 by hakotu           ###   ########.fr       */
+/*   Updated: 2025/07/03 15:53:54 by hakotu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,55 @@ PhoneBook::PhoneBook()
     this->consts = 0;
 }
 
-bool PhoneBook::add()
+int PhoneBook::add()
 {
     Contact newContact;
     while (!newContact.set_first_name())
-        ;
+    {
+        if (std::cin.eof())
+        {
+            std::cout << "Input stream closed. Exiting." << std::endl;
+            return 1;
+        }
+    }
     while (!newContact.set_last_name())
-        ;
-    while (!newContact.set_nick_name())
-        std::cout << "Nick Name cannot be empty!" << std::endl;
-    while (!newContact.set_phone_number())
-        ;
-    while (!newContact.set_darkest_secret())
-        std::cout << "Darkest Secret cannot be empty!" << std::endl;
+    {
+        if (std::cin.eof())
+        {
+            std::cout << "Input stream closed. Exiting." << std::endl;
+            return 1;
+        }
+    }
+    do {
+        newContact.set_nick_name();
+        if (std::cin.eof())
+        {
+            std::cout << "Input stream closed. Exiting." << std::endl;
+            return 1;
+        }
+    } while (newContact.get_nick_name().empty());
+    do {
+        newContact.set_phone_number();
+        if (std::cin.eof())
+        {
+            std::cout << "Input stream closed. Exiting." << std::endl;
+            return 1;
+        }
+    } while (newContact.get_phone_number().empty());
+    do {
+        newContact.set_darkest_secret();
+        if (std::cin.eof())
+        {
+            std::cout << "Input stream closed. Exiting." << std::endl;
+            return 1;
+        }
+    } while (newContact.get_darkest_secret().empty());
     this->ContactArry[this->index] = newContact;
     this->index = (this->index + 1) % 8;
     if (this->consts < 8)
         this->consts++;
     std::cout << "Contact added." << std::endl;
-    return true;
+    return 0;
 }
 std::string set_format(std::string str)
 {
@@ -46,14 +76,14 @@ std::string set_format(std::string str)
     else
         return str;
 }
-bool PhoneBook::search()
+int PhoneBook::search()
 {
     std::string input;
     int idx;
     if (this->consts == 0)
     {
         std::cout << "No contacts to display" << std::endl;
-        return false;
+        return 1;
     }
     std::cout << "|-------------------------------------------|" << std::endl;
     std::cout << "|   Index  |First Name| Last Name| Nick Name|" << std::endl;
@@ -95,11 +125,11 @@ bool PhoneBook::search()
             std::cout << "Invalid index or empty contact. Please try again." << std::endl;
         }
     }    
-    return true;
+    return 0;
     
 }
 
-bool PhoneBook::exit()
+int PhoneBook::exit()
 {
     std::cout << "See you later" << std::endl;
     return (0);
