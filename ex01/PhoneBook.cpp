@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hakotu <hakotu@student.42istanbul.com>     +#+  +:+       +#+        */
+/*   By: hakotu <hakotu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/26 14:40:02 by hakotu            #+#    #+#             */
-/*   Updated: 2025/07/06 13:51:14 by hakotu           ###   ########.fr       */
+/*   Updated: 2025/07/06 15:42:54 by hakotu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ std::string set_format(std::string str)
 int PhoneBook::search()
 {
     std::string input;
+    int i;
     int idx;
     if (this->consts == 0)
     {
@@ -117,7 +118,8 @@ int PhoneBook::search()
         }
         if (input == "-1")
             break;
-        idx = atoi(input.c_str());
+        i = input[0] - '0';
+        idx = i;
         if (idx == -1)
             break;
         if (idx >= 0 && idx < this->consts && !this->ContactArry[idx].get_first_name().empty())
